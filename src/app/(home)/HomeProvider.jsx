@@ -59,6 +59,8 @@
 
 "use client";
 import { Provider } from "react-redux";
+import { motion, AnimatePresence } from "framer-motion";
+
 import { store } from "@/store/store";
 import React, { useContext, useEffect, useState } from "react";
 
@@ -75,6 +77,7 @@ import { UserContext } from "../component/context/UserContext";
 import { usePathname } from "next/navigation";
 import Navbar from "../component/home/Navbar";
 import { CarContext } from "../component/context/CarContext";
+import { Menu, X } from "lucide-react";
 
 const HomeProvider = ({ children }) => {
   const [userLocation, setUserLocation] = useState();
@@ -88,6 +91,8 @@ const HomeProvider = ({ children }) => {
   const [directionData, setDirectionData] = useState({});
   const [carAmount, setCarAmount] = useState();
 const pathname = usePathname();
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -135,8 +140,39 @@ const pathname = usePathname();
           <DestinationCordinatesContext.Provider value={{ destinations, setDestinations }}>
             <DirectionsContext.Provider value={{ directionData, setDirectionData }}>
               <SelectedCarAmountContext.Provider value={{ carAmount, setCarAmount }}>
-                 {!["/payment", "/success"].includes(pathname) && <Navbar />}
+                 <button
+  onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+  className="p-2 absolute left-4 top-3"
+>
+  <AnimatePresence mode="wait" initial={false}>
+    {isSidebarOpen ? (
+      <motion.div
+        key="close"
+        initial={{ rotate: -90, opacity: 0, scale: 0.8 }}
+        animate={{ rotate: 0, opacity: 1, scale: 1 }}
+        exit={{ rotate: 90, opacity: 0, scale: 0.8 }}
+        transition={{ duration: 0.3 }}
+      >
+        <X size={24} />
+      </motion.div>
+    ) : (
+      <motion.div
+        key="menu"
+        initial={{ rotate: 90, opacity: 0, scale: 0.8 }}
+        animate={{ rotate: 0, opacity: 1, scale: 1 }}
+        exit={{ rotate: -90, opacity: 0, scale: 0.8 }}
+        transition={{ duration: 0.3 }}
+      >
+        <Menu size={24} />
+      </motion.div>
+    )}
+  </AnimatePresence>
+</button>
+              {isSidebarOpen && !["/payment", "/success"].includes(pathname) && <Navbar setIsSidebarOpen={setIsSidebarOpen} isSidebarOpen={isSidebarOpen} />}
+                <div className="mt-10">
+
                 {children}
+                </div>
               </SelectedCarAmountContext.Provider>
             </DirectionsContext.Provider>
           </DestinationCordinatesContext.Provider>
