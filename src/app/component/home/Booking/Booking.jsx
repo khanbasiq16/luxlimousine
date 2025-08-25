@@ -51,7 +51,7 @@ const Booking = () => {
   const bookingHandler = () => {
 
   if (!userdata) {
-    toast.error("User not logged in!");
+    router.push("/sign-in")
     return;
   }
 
