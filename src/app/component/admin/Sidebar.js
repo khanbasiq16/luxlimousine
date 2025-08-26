@@ -75,7 +75,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         lg:translate-x-0`}
     >
       <div className="p-5 font-bold text-xl border-b border-gray-200 flex justify-between items-center">
-  <img src="/logo.webp" alt="Logo" className="h-20 w-auto" />
+  <img src="/logo.png" alt="Logo" className="h-16 w-auto" />
   
   {/* Close button for mobile */}
   <button className="lg:hidden" onClick={() => setIsOpen(false)}>

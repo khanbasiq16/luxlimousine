@@ -212,10 +212,10 @@ const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         {/* Top - Logo + Links */}
         <div>
           <Image
-            src="/logo.webp"
+            src="/logo.png"
             alt="logo"
-            width={45}
-            height={45}
+            width={200}
+            height={200}
             className="object-contain cursor-pointer mb-10"
             onClick={() => router.push("/")}
           />
