@@ -18,7 +18,7 @@ const Navbar = ({ toggleSidebar, isOpen }) => {
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/get-all-notification");
+        const res = await fetch("/api/get-all-notification");
         const data = await res.json();
         if (data.success) {
           setNotifications(data.notifications);
@@ -114,7 +114,7 @@ const Navbar = ({ toggleSidebar, isOpen }) => {
                   notifications.map((n) => (
                     <Link
                       key={n.id}
-                      href={`viewbokingdetails/${n.booking_id}`}
+                      href={`/viewbokingdetails/${n.booking_id}`}
                       onClick={() => setShowNotifications(false)} // close dropdown on click
                       className="flex items-start gap-3 p-3 hover:bg-gray-100 cursor-pointer border-b border-gray-100"
                     >
