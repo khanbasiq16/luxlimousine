@@ -37,9 +37,9 @@ const Page = () => {
       {/* Left Section */}
       <div className="hidden md:flex w-1/2 flex-col justify-center items-center text-center p-10 bg-gray-100">
         <img
-          src="/logo.webp"
+          src="/logo.png"
           alt="Taxi Service Logo"
-          className="w-32 h-32 mb-6"
+          className="w-auto h-20 mb-6"
         />
         <h1 className="text-3xl font-bold text-gray-900 mb-4">
           Welcome to Luxcar
