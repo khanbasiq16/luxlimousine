@@ -43,6 +43,7 @@ const CreateCarPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setloading(true);
+    
     const formData = new FormData();
     formData.append("carName", carName);
     formData.append("description", description);

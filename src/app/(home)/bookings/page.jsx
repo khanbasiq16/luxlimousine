@@ -9,7 +9,7 @@ const Page = () => {
   const router = useRouter();
   const { userdata, setUserData } = useContext(UserContext);
   const [bookings, setBookings] = useState([]);
-  const [loading, setLoading] = useState(true); // loading state
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const checkUser = async () => {
